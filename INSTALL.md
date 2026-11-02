@@ -1,6 +1,6 @@
 # MicroStereo 跨平台下載與安裝
 
-本指南適用已發布的 **v0.1.28**。Android、iPhone 與 iPad 使用同一份主題檔案；安裝方式因系統的檔案存取限制而不同。尚未提交至 GitHub 的本機開發變更，不會透過 Release 或 BRAT 取得。
+本指南適用已發布的 **v0.1.29**。Android、iPhone 與 iPad 使用同一份主題檔案；安裝方式因系統的檔案存取限制而不同。尚未提交至 GitHub 的本機開發變更，不會透過 Release 或 BRAT 取得。
 
 | 平台 | 建議方式 | 入口 |
 | --- | --- | --- |
@@ -14,7 +14,7 @@ MicroStereo 尚未收錄至 Obsidian 社群主題目錄，無法直接在「外�
 <a id="android"></a>
 ## Android
 
-1. 在手機瀏覽器下載 [MicroStereo-0.1.28.zip](https://github.com/MiuDog/MicroStereo/releases/download/v0.1.28/MicroStereo-0.1.28.zip)。
+1. 在手機瀏覽器下載 [MicroStereo-0.1.29.zip](https://github.com/MiuDog/MicroStereo/releases/download/v0.1.29/MicroStereo-0.1.29.zip)。
 2. 使用檔案管理器解壓，找到包含 `theme.css`、`manifest.json`、`LICENSE`、`licenses` 的 **MicroStereo 資料夾**。若外層還有以 ZIP 檔名命名的資料夾，請使用內層 MicroStereo。
 3. 在檔案管理器中啟用「顯示隱藏檔案」，找到 Obsidian 實際開啟的筆記庫。
 4. 將整個 MicroStereo 資料夾複製到該筆記庫的 `.obsidian/themes/`；若 `themes` 不存在，可建立它。
@@ -72,7 +72,7 @@ BRAT 是安裝／更新工具，MicroStereo 本身仍只有 CSS，沒有主題�
 <a id="ios-manual"></a>
 ## iPhone／iPad 手動安裝：不使用 BRAT
 
-1. 下載 [MicroStereo-0.1.28.zip](https://github.com/MiuDog/MicroStereo/releases/download/v0.1.28/MicroStereo-0.1.28.zip)，不要使用隱藏資料夾結構的 install ZIP。
+1. 下載 [MicroStereo-0.1.29.zip](https://github.com/MiuDog/MicroStereo/releases/download/v0.1.29/MicroStereo-0.1.29.zip)，不要使用隱藏資料夾結構的 install ZIP。
 2. 在「檔案」App 點一下 ZIP 解壓，找到內層 MicroStereo 資料夾。
 3. 使用能查看／編輯隱藏檔案的檔案管理工具，開啟目標筆記庫。可參考 Obsidian 官方列出的工具；內建「檔案」App 本身不提供這項存取能力。
 4. 將 MicroStereo 複製至 `.obsidian/themes/`，保留其內 `theme.css`、`manifest.json` 與授權檔案。
@@ -83,7 +83,7 @@ BRAT 是安裝／更新工具，MicroStereo 本身仍只有 CSS，沒有主題�
 <a id="desktop"></a>
 ## Windows／macOS／Linux
 
-1. 下載 [MicroStereo-0.1.28-install.zip](https://github.com/MiuDog/MicroStereo/releases/download/v0.1.28/MicroStereo-0.1.28-install.zip)。
+1. 下載 [MicroStereo-0.1.29-install.zip](https://github.com/MiuDog/MicroStereo/releases/download/v0.1.29/MicroStereo-0.1.29-install.zip)。
 2. 解壓至筆記庫根目錄，讓主題位於 `.obsidian/themes/MicroStereo/`。
 3. 重新開啟筆記庫，在「設定 → 外觀」選擇 MicroStereo。
 
@@ -97,3 +97,9 @@ BRAT 是安裝／更新工具，MicroStereo 本身仍只有 CSS，沒有主題�
 - 若你使用自訂設定資料夾，請以該資料夾取代 `.obsidian`。
 
 目前主要外觀驗證環境仍是 Windows 桌面版 Obsidian 1.14.5。此文件提供行動裝置的安裝方法，不代表 Android、iOS 或 iPadOS 的全部畫面已經過實機視覺驗收。
+
+## 更新至 0.1.29
+
+此版補上行動端微立體、配色與 iPad 橫直向版型。已安裝者以 BRAT 更新 `MiuDog/MicroStereo`，或重新下載本頁新版 ZIP 並覆蓋主題資料夾，然後重新啟動 Obsidian。主題仍為純 CSS，不需新增功能外掛。
+
+行動視覺以桌面為基準；觸控控制保留 44px 高度。已用 Obsidian 行動模擬器檢查，尚未完成實體 iPad／Android 裝置驗收。

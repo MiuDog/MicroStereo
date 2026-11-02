@@ -24,6 +24,9 @@ flowchart TD
 	Adapter --> Workspace[側欄／Stage／分頁]
 	Adapter --> Content[文字／清單／引用／程式碼／表格]
 	Adapter --> Controls[按鈕／輸入框／開關／選單]
+	Adapter --> Mobile[原生行動 DOM 適配]
+	Mobile --> Drawers[抽屜／固定側欄／平板分頁]
+	Mobile --> Touch[觸控尺寸／原生導覽／設定]
 	Host --> Accent[使用者 accent HSL]
 	Accent --> Colored[連結／Tag／標記／Primary／焦點]
 	Extra[選用極深色片段] --> Tokens
@@ -43,13 +46,25 @@ flowchart TD
 
 ## 閱讀與編輯
 
+0.1.29 字色依最新需求：無局部背景的普通內文採次要文字色，亮色#6a655b、深色#bab5aa。粗體採宿主輔色，斜體採不透明純色（亮#746f65／暗#989387）；標題保持klp-text。Callout、表格、標記、程式碼、Tag、控制項及明確inline background容器將text-normal局部重設為klp-text；其中繼承普通前景的背景表面另恢復主文字色，已有語意或inline前景的文字保留自身配方。作用範圍僅筆記閱讀／編輯容器，不影響側欄與設定介面，不改排版。隨 0.1.29 發布。
+
 兩種模式共用文字語意、清單標記、引用及程式碼配方；不替換兩個原生語法引擎。普通識別字與標點針對可辨識 token 對齊配色，複製控制共用 24px 控制與 16px 圖形，保留原生操作。
 
 來源空白行及圍欄保留自然行高，避免行號重疊。一般 Tab 指引線為 2px，位於真實 Tab 起點；清單指引線仍對準標記中心。作用中引用保留原始符號並移除裝飾線，非作用行保留粗圓端左線。
 
+清單內的行內程式碼續行可能沒有HyperMD-list-line類別，只有子token帶cm-list層級；以cm-line:has([class*="cm-list-"])辨識這種續行，將cm-indent恢復static、偽元素left設auto並沿用indentation-guide-editing-indent。這讓多層指引線依各Tab原生位置及完整行高繪製，不誤用獨立Tab的零偏移；一般非清單Tab仍使用原有游標起點定位。此修正隨 0.1.29 發布。
+
 唯一 `!important` 規則限定即時預覽直接 `.cm-callout` 容器的 `contain: none`，解除宿主 paint containment 對陰影的裁切。主題不接管高度快取或解析器，不保證任意語法及縮放逐像素相同。
 
 表格移除外框、保留內部格線與圓角，原生新增列／欄改為半透明粗條。原生文字選取選單、Markdown 空白折疊及游標演算法不由主題接管。
+
+## 行動適配
+
+行動樣式限定 `body.is-mobile`，平板分頁及固定側欄限定 `body.is-tablet`；共用桌面語意與 `effect-frame-relief`，不另建行動色盤。原生 workspace、drawer、mobile-navbar、toolbar 分別投影同一組表面；保留安全區、鍵盤位置、滑動與原生側欄事件。Stage 外距仍為 8px，分頁容器留出陰影繪製空間。新版宿主的 mod-raised 玻璃效果改為實色微立體，設定保留薄陰影及既有圓角層級。
+
+觸控控制以宿主 touch-size-m（44px）保留可點擊高度。複製控制只放大觸控盒，圖形仍為 16px；下拉右側保留箭頭空間，系統選取器不由 CSS 接管。WebKit 遮罩與背景濾鏡均有前綴適配。行號頁面的左右留白改為 48px／16px，避免窄螢幕沿用桌面雙側 64px。
+
+驗證採隔離 QA 筆記庫的原生行動模擬 DOM，涵蓋橫向 1024、直向 768 及手機 390／412 級距、明暗、閱讀／編輯、側欄與設定。共用五類元件各七項視覺屬性在明暗模式共 70 項桌面比較相同。這些是 Chromium 模擬證據，未完成實體 iPadOS WebKit 或 Android 裝置驗收，不宣稱跨引擎像素一致。
 
 ## 發行邊界
 

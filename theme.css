@@ -164,6 +164,8 @@ body {
 
 /* 淺色：theme.colors 的 light 欄，ARGB 已轉為 CSS RGB／RGBA。 */
 .theme-light {
+	--klp-prose-body: var(--klp-text-muted);
+	--klp-prose-italic: #746f65;
 	--klp-settings-button-shadow: 0 1px 2px #00000029, inset 0 1px 0 #ffffff80;
 	--klp-callout-tint: 16%;
 	--klp-callout-icon-tint: 50%;
@@ -216,6 +218,8 @@ body {
 
 /* 深色：theme.colors 的 dark 欄，保留暖灰與黑白操作色。 */
 .theme-dark {
+	--klp-prose-body: var(--klp-text-muted);
+	--klp-prose-italic: #989387;
 	--klp-settings-button-shadow: 0 1px 2px #00000052, inset 0 1px 0 #ffffff14;
 	--klp-callout-tint: 28%;
 	--klp-callout-icon-tint: 80%;
@@ -925,6 +929,40 @@ body:not(.is-mobile) .modal.mod-settings :is(button:not(.clickable-icon), select
 	box-shadow: none;
 }
 
+/* 普通內文採次要文字色；局部背景容器另行保留原本主文字與語意配色。 */
+.markdown-reading-view,
+.markdown-source-view.mod-cm6 {
+	--text-normal: var(--klp-prose-body);
+	--bold-color: var(--klp-control-accent);
+	--italic-color: var(--klp-prose-italic);
+	color: var(--text-normal);
+}
+
+/* 有背景的筆記元件不繼承普通內文降對比，不覆蓋其既有語意前景色。 */
+:is(.markdown-reading-view, .markdown-source-view.mod-cm6) :is(.callout, table, .cm-table-widget, mark, .cm-highlight, pre, code, .cm-inline-code, button, input, textarea, select, .tag, .cm-hashtag, [style*="background"]) {
+	--text-normal: var(--klp-text);
+}
+
+.markdown-reading-view :is(.callout, table, mark, [style*="background"]),
+.markdown-source-view.mod-cm6 :is(.callout, .cm-table-widget, table, mark, [style*="background"]),
+.markdown-source-view.mod-cm6 .cm-highlight:not(.cm-strong, .cm-em, .cm-hashtag, .cm-inline-code) {
+	color: var(--text-normal);
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6, th),
+.markdown-source-view.mod-cm6 .HyperMD-header,
+.markdown-reading-view .callout-title,
+.markdown-source-view.mod-cm6 .callout-title {
+	--bold-color: var(--klp-text);
+	--italic-color: var(--klp-text);
+	color: var(--klp-text);
+}
+
+.markdown-rendered :is(strong em, em strong, b em, em b),
+.markdown-source-view.mod-cm6 .cm-strong.cm-em {
+	color: var(--bold-color);
+}
+
 /* 行內程式碼共用明確留白；保留inline分行及原生作用行語法。 */
 .markdown-rendered :not(pre) > code,
 .markdown-source-view.mod-cm6.is-live-preview .cm-line:not(.HyperMD-codeblock) > .cm-inline-code:not(.cm-formatting) {
@@ -1193,6 +1231,16 @@ input[type="checkbox"]:not(:checked) {
 	margin-inline-start: 0;
 }
 
+/* 清單內行內程式碼可能只有子token帶cm-list層級；續行仍沿用清單導引位置。 */
+.markdown-source-view.mod-cm6.is-live-preview .cm-line:not(.HyperMD-list-line):has([class*="cm-list-"]) .cm-indent {
+	position: static;
+}
+
+.markdown-source-view.mod-cm6.is-live-preview .cm-line:not(.HyperMD-list-line):has([class*="cm-list-"]) .cm-indent::before {
+	inset-inline-start: auto;
+	margin-inline-start: var(--indentation-guide-editing-indent);
+}
+
 .markdown-source-view.mod-cm6.is-live-preview .HyperMD-list-line .cm-formatting-list {
 	position: relative;
 	display: inline-block;
@@ -1377,6 +1425,7 @@ input[type="checkbox"]:not(:checked) {
 	position: absolute;
 	inset: 4px;
 	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='8' width='14' height='14' rx='2' ry='2'/%3E%3Cpath d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/%3E%3C/svg%3E") center / contain no-repeat;
 	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='8' width='14' height='14' rx='2' ry='2'/%3E%3Cpath d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
@@ -1439,6 +1488,264 @@ input[type="checkbox"]:not(:checked) {
 	top: 0;
 	inset-inline-start: auto;
 	inset-inline-end: 100%;
+}
+
+/* 行動端共用語意外觀，保留原生抽屜、導覽、安全區與鍵盤定位。 */
+body.is-mobile {
+	--mobile-sidebar-background: var(--klp-surface-inset);
+	--mobile-sidebar-radius: var(--klp-radius-panel);
+	--settings-background: var(--klp-stage);
+	--settings-nav-background: var(--klp-surface-inset);
+	--touch-background: var(--klp-component);
+	--input-height: var(--touch-size-m);
+	--tag-background: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.16);
+	--tag-background-hover: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.24);
+	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.16);
+	background-color: var(--klp-app);
+	color: var(--klp-text);
+}
+
+body.is-mobile .app-container,
+body.is-mobile .horizontal-main-container {
+	background-color: var(--klp-app);
+}
+
+body.is-mobile .workspace {
+	padding: var(--klp-workspace-inset);
+	box-sizing: border-box;
+	background-color: var(--klp-app);
+}
+
+body.is-mobile .workspace > .mod-root {
+	min-width: 0;
+	background-color: transparent;
+	--file-margins: 16px;
+	--file-margins-x: 16px;
+	--file-margins-y: 16px;
+}
+
+/* 留出陰影繪製空間，不放開原生分頁的手勢裁切範圍。 */
+body.is-mobile .mod-root .workspace-tabs {
+	box-sizing: border-box;
+	padding: 2px 2px 6px;
+}
+
+body.is-mobile .mod-root .workspace-tabs > .workspace-tab-container {
+	margin: 0;
+	border: none;
+	border-radius: var(--klp-radius-panel);
+	background-color: var(--klp-stage);
+	box-shadow: var(--klp-frame-relief);
+}
+
+body.is-mobile .mod-root .workspace-tab-container .workspace-leaf {
+	border-radius: inherit;
+}
+
+body.is-mobile .mod-root .view-header {
+	background-color: transparent;
+}
+
+body.is-mobile .workspace-drawer {
+	border: none;
+	border-radius: var(--klp-radius-panel);
+	background-color: var(--klp-surface-inset);
+	box-shadow: var(--klp-frame-relief);
+}
+
+body.is-mobile .workspace-drawer-inner {
+	border-radius: inherit;
+	background-color: var(--klp-surface-inset);
+}
+
+body.is-mobile .workspace-drawer-ribbon {
+	border-inline-end: 1px dashed var(--klp-divider);
+	background-color: var(--klp-surface-inset);
+}
+
+body.is-tablet .workspace-drawer.mod-primary.is-pinned {
+	margin-inline-end: var(--klp-workspace-gap);
+}
+
+body.is-tablet .workspace-drawer.mod-secondary.is-pinned {
+	margin-inline-start: var(--klp-workspace-gap);
+}
+
+/* iPad原生分頁列採獨立Panel；手機不強制顯示桌面分頁列。 */
+body.is-tablet .mod-root .workspace-tab-header-container {
+	min-height: calc(var(--touch-size-m) + 12px);
+	height: calc(var(--touch-size-m) + 12px);
+	box-sizing: border-box;
+	align-items: center;
+	padding-block: 0 4px;
+	padding-inline: 0;
+	border-bottom: none;
+	background-color: transparent;
+}
+
+body.is-tablet .mod-root .workspace-tab-header-container-inner {
+	min-width: 0;
+	height: auto;
+	margin: 0;
+	align-items: center;
+	gap: var(--klp-space-content);
+	padding: 4px 0;
+}
+
+body.is-tablet .mod-root .workspace-tab-header-container > .sidebar-toggle-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	width: var(--touch-size-m);
+	height: var(--touch-size-m);
+	padding: 0;
+}
+
+body.is-tablet .mod-root .workspace-tab-header {
+	min-height: var(--touch-size-m);
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: var(--klp-radius-card);
+	background-color: var(--klp-surface);
+	box-shadow: var(--klp-frame-relief);
+}
+
+body.is-tablet .mod-root .workspace-tab-header.is-active {
+	background-color: var(--klp-stage);
+}
+
+body.is-tablet .mod-root .workspace-tab-header-inner {
+	min-height: var(--touch-size-m);
+	height: 100%;
+	box-sizing: border-box;
+	padding-inline: var(--klp-space-content);
+	border-radius: inherit;
+}
+
+body.is-tablet .mod-root .workspace-tab-header::before,
+body.is-tablet .mod-root .workspace-tab-header::after,
+body.is-tablet .mod-root .workspace-tab-header-inner::after {
+	content: none;
+}
+
+/* 新版行動宿主的玻璃控制改用桌面實色表面與陰影，避免混入膠囊風格。 */
+body.is-mobile .mod-raised {
+	border: none;
+	border-radius: var(--klp-radius-control);
+	background-color: var(--klp-component);
+	box-shadow: var(--klp-frame-relief);
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+body.is-mobile .app-container .workspace .view-header .mod-raised,
+body.is-mobile .app-container .mobile-navbar.mod-raised {
+	border: none;
+	border-radius: var(--klp-radius-control);
+	background-color: var(--klp-component);
+	box-shadow: var(--klp-frame-relief);
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+/* Header圖示沿用桌面平面操作列，只有導航容器使用微立體。 */
+body.is-mobile .app-container .workspace .view-header .mod-raised {
+	background-color: transparent;
+	box-shadow: none;
+}
+
+body.is-mobile .modal,
+body.is-mobile .modal.mod-settings .setting-items {
+	border-radius: var(--klp-radius-panel);
+}
+
+body.is-mobile .modal.mod-settings .setting-items > .setting-item {
+	border-radius: 0;
+}
+
+body.is-mobile .modal.mod-settings .vertical-tab-nav-item {
+	border-radius: var(--klp-radius-card);
+}
+
+body.is-mobile .modal.mod-settings .mod-raised {
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+	box-shadow: var(--klp-settings-button-shadow);
+}
+
+body.is-mobile .modal.mod-settings .search-input-container {
+	background-color: transparent;
+	box-shadow: none;
+}
+
+body.is-mobile .modal.mod-settings .search-input-container input {
+	border-radius: var(--klp-radius-control);
+}
+
+body.is-mobile .app-container .mobile-navbar.mod-raised {
+	--raised-background: var(--klp-surface);
+	border: none;
+	border-radius: var(--klp-radius-panel);
+	background-color: var(--klp-surface);
+	box-shadow: var(--klp-frame-relief);
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+body.is-mobile .mobile-toolbar {
+	background-color: transparent;
+	box-shadow: none;
+}
+
+body.is-mobile :is(.mobile-toolbar-options-list, .mobile-toolbar-floating-options) {
+	border-radius: var(--klp-radius-panel);
+	background-color: var(--klp-component);
+	box-shadow: var(--klp-frame-relief);
+}
+
+/* 只同步按鈕立體比例，行動控制保留44px以上的原生觸控尺寸。 */
+body.is-mobile button:not(.clickable-icon),
+body.is-mobile select.dropdown {
+	min-height: var(--touch-size-m);
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 8px 12px;
+	border-radius: var(--klp-radius-control);
+	box-shadow: var(--klp-frame-relief);
+}
+
+body.is-mobile select.dropdown {
+	padding-inline-end: 32px;
+	border: none;
+	background-color: var(--klp-component);
+	color: var(--klp-text);
+}
+
+body.is-mobile .modal.mod-settings :is(button:not(.clickable-icon), select.dropdown) {
+	box-shadow: var(--klp-settings-button-shadow);
+}
+
+body.is-mobile .markdown-rendered pre .copy-code-button,
+body.is-mobile .markdown-source-view.mod-cm6.is-live-preview .code-block-flair {
+	width: var(--touch-size-m);
+	height: var(--touch-size-m);
+	min-height: var(--touch-size-m);
+	padding: 14px;
+	background-color: transparent;
+	box-shadow: none;
+}
+
+body.is-mobile .markdown-rendered pre .copy-code-button::after,
+body.is-mobile .markdown-source-view.mod-cm6.is-live-preview .code-block-flair::after {
+	inset: 14px;
+}
+
+/* 窄螢幕只保留必要行號空間，不沿用桌面的雙側64px留白。 */
+body.is-mobile .view-content:has(.cm-lineNumbers) > .markdown-reading-view > .markdown-preview-view,
+body.is-mobile .view-content:has(.cm-lineNumbers) > .markdown-source-view.mod-cm6.is-live-preview > .cm-editor > .cm-scroller {
+	padding-inline: 48px 16px;
 }
 
 /* 尊重系統減少動態效果；不影響編輯器游標或外掛的功能性動畫。 */

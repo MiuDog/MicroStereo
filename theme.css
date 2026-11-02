@@ -1492,6 +1492,16 @@ input[type="checkbox"]:not(:checked) {
 
 /* 行動端共用語意外觀，保留原生抽屜、導覽、安全區與鍵盤定位。 */
 body.is-mobile {
+	--slider-track-height: 4px;
+	--slider-thumb-y: calc((var(--slider-track-height) - var(--slider-thumb-height)) / 2);
+	--slider-thumb-y-active: var(--slider-thumb-y);
+	--toggle-radius: 4px;
+	--toggle-thumb-radius: 2px;
+	--slider-thumb-height: 12px;
+	--slider-thumb-width: 12px;
+	--slider-thumb-height-active: var(--slider-thumb-height);
+	--slider-thumb-width-active: var(--slider-thumb-width);
+	--slider-thumb-radius: 3px;
 	--mobile-sidebar-background: var(--klp-surface-inset);
 	--mobile-sidebar-radius: var(--klp-radius-panel);
 	--settings-background: var(--klp-stage);
@@ -1503,6 +1513,21 @@ body.is-mobile {
 	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.16);
 	background-color: var(--klp-app);
 	color: var(--klp-text);
+}
+
+/* 行動側欄的下拉外觀位於內層，不繼承宿主的膠囊圓角。 */
+body.is-mobile .dropdown,
+body.is-mobile .workspace-drawer .workspace-drawer-tab-select > .workspace-tab-header-inner {
+	border-radius: var(--klp-radius-control);
+}
+
+/* WebKit行動拖動點保持桌面正方形比例，按壓時不放大。 */
+body.is-mobile input[type="range"]::-webkit-slider-thumb {
+	top: 0;
+	width: var(--slider-thumb-width);
+	height: var(--slider-thumb-height);
+	border-radius: var(--slider-thumb-radius);
+	margin-top: var(--slider-thumb-y);
 }
 
 body.is-mobile .app-container,

@@ -64,6 +64,8 @@ flowchart TD
 
 觸控控制以宿主 touch-size-m（44px）保留可點擊高度。複製控制只放大觸控盒，圖形仍為 16px；下拉右側保留箭頭空間，系統選取器不由 CSS 接管。WebKit 遮罩與背景濾鏡均有前綴適配。行號頁面的左右留白改為 48px／16px，避免窄螢幕沿用桌面雙側 64px。
 
+0.1.30 明確在 body.is-mobile 重新投影 toggle／slider 的宿主變數，避免原生行動預設覆寫：toggle 軌道 4px、正方形色塊 2px 圓角；slider 拖動點 12×12px、3px 圓角、4px 軌道，按壓不放大。WebKit 拖動點 top 歸零，只用 (track−thumb)/2 的 margin 置中，避免原生 top 與 margin 重複偏移。側欄下拉的實際表面位於 workspace-drawer-tab-select > workspace-tab-header-inner，單獨套用 6px 控制圓角；不更換選單或事件。
+
 驗證採隔離 QA 筆記庫的原生行動模擬 DOM，涵蓋橫向 1024、直向 768 及手機 390／412 級距、明暗、閱讀／編輯、側欄與設定。共用五類元件各七項視覺屬性在明暗模式共 70 項桌面比較相同。這些是 Chromium 模擬證據，未完成實體 iPadOS WebKit 或 Android 裝置驗收，不宣稱跨引擎像素一致。
 
 ## 發行邊界

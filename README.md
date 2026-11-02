@@ -6,6 +6,17 @@
 
 ## 下載與安裝
 
+| 平台 | 安裝方式 |
+| --- | --- |
+| Windows／macOS／Linux | 下方 ZIP 手動安裝 |
+| Android | [下載 ZIP、顯示隱藏資料夾並安裝](INSTALL.md#android) |
+| iPhone／iOS | [使用 BRAT 從 GitHub 安裝](INSTALL.md#ios) |
+| iPad／iPadOS | [使用 BRAT 從 GitHub 安裝](INSTALL.md#ipados) |
+
+[完整跨平台安裝指南](INSTALL.md)。iPhone／iPad 可以下載 ZIP，但系統「檔案」App 無法直接管理隱藏的 `.obsidian`，不能照桌面的解壓步驟操作；手機上的 BRAT 僅協助安裝／更新，主題本身仍是純 CSS。
+
+### 桌面 ZIP 安裝
+
 從 [最新 Release](https://github.com/MiuDog/MicroStereo/releases/latest) 下載 `MicroStereo-0.1.28-install.zip`。
 
 1. 將安裝包直接解壓至 Obsidian **筆記庫根目錄**。

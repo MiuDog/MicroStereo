@@ -1,0 +1,31 @@
+/* micro-stereo 極深色選用 snippet；啟用主題並切到深色模式後生效。 */
+body.theme-dark {
+	--klp-app: #101010;
+	--klp-surface: #232323;
+	--klp-surface-inset: #232323;
+	--klp-surface-muted: #232323;
+	--klp-component: #1d1d1d;
+	--klp-stage: #1d1d1d;
+	--klp-overlay: #232323;
+	--klp-text: #f2f0eb;
+	--klp-text-muted: #9e998f;
+	--klp-text-faint: #8e8982;
+	--klp-border: transparent;
+	--klp-divider: #292929;
+	--klp-guide: #7f7a75;
+	--klp-brand: #f2f0eb;
+	--klp-interaction: #f2f0eb;
+	--klp-interaction-rgb: 242, 240, 235;
+	--klp-interaction-soft: #232323;
+	--klp-on-brand: #1d1d1d;
+	--klp-hover: rgb(242 240 235 / 10%);
+	--klp-focus: rgb(242 240 235 / 18%);
+	--klp-button-hover: #323231;
+	--klp-brand-hover: #dddbd6;
+	--klp-brand-pressed: #cccac6;
+	--mono-rgb-0: 29, 29, 29;
+	--mono-rgb-100: 242, 240, 235;
+	--accent-h: 42.857143;
+	--accent-s: 21.212121%;
+	--accent-l: 93.529412%;
+}

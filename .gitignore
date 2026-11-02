@@ -1,0 +1,7 @@
+.reference/
+.preview/
+dist/
+
+# 本機測試筆記、視窗量測及歷史截圖不屬公開主題原始檔。
+docs/
+review/

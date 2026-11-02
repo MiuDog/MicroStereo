@@ -1,20 +1,20 @@
-# micro-stereo
+# MicroStereo
 
 以微立體表面、暖灰配色與獨立分頁 Panel 為特色的 Obsidian 純 CSS 佈景主題。設計源自 [Kallopis](https://github.com/technis-toolbox/Kallopis/tree/main/docs/design-tokens) 的「現代生產力」風格，支援亮色與深色，無需功能外掛。
 
-目前版本：**0.1.27**。
+目前版本：**0.1.28**。
 
 ## 下載與安裝
 
-從 [最新 Release](https://github.com/MiuDog/micro-stereo/releases/latest) 下載 `micro-stereo-0.1.27-install.zip`。
+從 [最新 Release](https://github.com/MiuDog/MicroStereo/releases/latest) 下載 `MicroStereo-0.1.28-install.zip`。
 
 1. 將安裝包直接解壓至 Obsidian **筆記庫根目錄**。
-2. 確認檔案位於 `.obsidian/themes/micro-stereo/`。
-3. 在「設定 → 外觀 → 佈景主題」選擇 **micro-stereo**。
+2. 確認檔案位於 `.obsidian/themes/MicroStereo/`。
+3. 在「設定 → 外觀 → 佈景主題」選擇 **MicroStereo**。
 
 若主題尚未出現，重新開啟筆記庫。這是手動安裝包，尚未提交至 Obsidian 社群主題目錄。
 
-也可下載 `micro-stereo-0.1.27.zip`，將其中的 `micro-stereo` 資料夾放入 `.obsidian/themes/`。請擇一安裝。
+也可下載 `MicroStereo-0.1.28.zip`，將其中的 `MicroStereo` 資料夾放入 `.obsidian/themes/`。請擇一安裝。
 
 ## 風格與設定
 
@@ -27,7 +27,7 @@
 
 明暗模式沿用 Obsidian「基本佈景主題」。正文全寬由「設定 → 編輯器 → 可讀行寬」控制：開啟限制行寬，關閉使用可用全寬。
 
-極深色為選用片段：將 [extras/micro-stereo-ultra-dark.css](extras/micro-stereo-ultra-dark.css) 放入 `.obsidian/snippets/`，在外觀設定啟用，再切換為深色模式。
+極深色為選用片段：將 [extras/MicroStereo-ultra-dark.css](extras/MicroStereo-ultra-dark.css) 放入 `.obsidian/snippets/`，在外觀設定啟用，再切換為深色模式。
 
 ## 支援範圍
 

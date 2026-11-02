@@ -1,4 +1,4 @@
-# micro-stereo 架構
+# MicroStereo 架構
 
 本專案是 Obsidian 純 CSS 主題，沒有 JavaScript 執行碼、外掛生命週期或網路請求；宿主擁有 DOM、設定、Markdown 解析、輸入、游標及複製操作。
 
@@ -7,8 +7,8 @@
 | 檔案 | 責任 |
 | --- | --- |
 | theme.css | Kallopis token 投影、原生變數適配、元件配方、閱讀與編輯樣式、內嵌 WOFF2 字型 |
-| manifest.json | 主題名稱 micro-stereo、版本、作者及最低宿主版本 |
-| extras/micro-stereo-ultra-dark.css | 使用者自行啟用的極深色語意覆寫 |
+| manifest.json | 主題名稱 MicroStereo、版本、作者及最低宿主版本 |
+| extras/MicroStereo-ultra-dark.css | 使用者自行啟用的極深色語意覆寫 |
 | licenses/ | 內嵌字型原始 OFL 授權 |
 | README.md | 安裝、設定、支援範圍及授權 |
 | .editorconfig | UTF-8、LF、Tab 縮排及 2 欄寬 |
@@ -53,4 +53,4 @@ flowchart TD
 
 ## 發行邊界
 
-公開倉庫僅包含主題原始檔、使用說明與授權。本機測試筆記、歷史截圖、視窗量測及工具由 gitignore 排除。安裝 ZIP 僅寫入 `.obsidian/themes/micro-stereo/`，不包含或覆寫筆記庫設定。
+公開倉庫僅包含主題原始檔、使用說明與授權。本機測試筆記、歷史截圖、視窗量測及工具由 gitignore 排除。安裝 ZIP 僅寫入 `.obsidian/themes/MicroStereo/`，不包含或覆寫筆記庫設定。

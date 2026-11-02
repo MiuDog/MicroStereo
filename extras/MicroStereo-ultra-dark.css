@@ -1,4 +1,4 @@
-/* micro-stereo 極深色選用 snippet；啟用主題並切到深色模式後生效。 */
+/* MicroStereo 極深色選用 snippet；啟用主題並切到深色模式後生效。 */
 body.theme-dark {
 	--klp-app: #101010;
 	--klp-surface: #232323;

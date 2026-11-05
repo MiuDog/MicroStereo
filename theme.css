@@ -931,6 +931,7 @@ body:not(.is-mobile) .modal.mod-settings :is(button:not(.clickable-icon), select
 
 /* 普通內文採次要文字色；局部背景容器另行保留原本主文字與語意配色。 */
 .markdown-reading-view,
+.canvas-node-content :where(.markdown-rendered),
 .markdown-source-view.mod-cm6 {
 	--text-normal: var(--klp-prose-body);
 	--bold-color: var(--klp-control-accent);
@@ -939,11 +940,11 @@ body:not(.is-mobile) .modal.mod-settings :is(button:not(.clickable-icon), select
 }
 
 /* 有背景的筆記元件不繼承普通內文降對比，不覆蓋其既有語意前景色。 */
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6) :is(.callout, table, .cm-table-widget, mark, .cm-highlight, pre, code, .cm-inline-code, button, input, textarea, select, .tag, .cm-hashtag, [style*="background"]) {
+:is(.markdown-reading-view, .canvas-node-content :where(.markdown-rendered), .markdown-source-view.mod-cm6) :is(.callout, table, .cm-table-widget, mark, .cm-highlight, pre, code, .cm-inline-code, button, input, textarea, select, .tag, .cm-hashtag, [style*="background"]) {
 	--text-normal: var(--klp-text);
 }
 
-.markdown-reading-view :is(.callout, table, mark, [style*="background"]),
+:is(.markdown-reading-view, .canvas-node-content :where(.markdown-rendered)) :is(.callout, table, mark, [style*="background"]),
 .markdown-source-view.mod-cm6 :is(.callout, .cm-table-widget, table, mark, [style*="background"]),
 .markdown-source-view.mod-cm6 .cm-highlight:not(.cm-strong, .cm-em, .cm-hashtag, .cm-inline-code) {
 	color: var(--text-normal);
@@ -951,11 +952,20 @@ body:not(.is-mobile) .modal.mod-settings :is(button:not(.clickable-icon), select
 
 .markdown-rendered :is(h1, h2, h3, h4, h5, h6, th),
 .markdown-source-view.mod-cm6 .HyperMD-header,
-.markdown-reading-view .callout-title,
+:is(.markdown-reading-view, .canvas-node-content :where(.markdown-rendered)) .callout-title,
 .markdown-source-view.mod-cm6 .callout-title {
 	--bold-color: var(--klp-text);
 	--italic-color: var(--klp-text);
 	color: var(--klp-text);
+}
+
+/* 引用內的強調文字沿用正文色票，保留原生引用標記顏色。 */
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote.cm-strong:not(.cm-formatting) {
+	color: var(--bold-color);
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote .cm-quote.cm-em:not(.cm-formatting, .cm-strong) {
+	color: var(--italic-color);
 }
 
 .markdown-rendered :is(strong em, em strong, b em, em b),
@@ -1252,6 +1262,12 @@ input[type="checkbox"]:not(:checked) {
 	text-indent: 0;
 }
 
+/* 空白列點的尾端空格保留寬度，讓游標落在標記區右緣的正文起點。 */
+.markdown-source-view.mod-cm6.is-live-preview .HyperMD-list-line .cm-formatting-list-ul:last-child {
+	text-align: end;
+	white-space: pre;
+}
+
 .markdown-source-view.mod-cm6.is-live-preview .HyperMD-list-line .list-bullet {
 	position: static;
 }
@@ -1378,6 +1394,36 @@ input[type="checkbox"]:not(:checked) {
 .markdown-rendered pre > code {
 	display: block;
 	line-height: var(--klp-code-leading);
+}
+
+/* 閱讀預覽將原生語法類別映射到與編輯器共用的主題色票。 */
+.markdown-rendered pre .token.keyword {
+	color: var(--code-keyword);
+}
+
+.markdown-rendered pre :is(.token.string, .token.char, .token.attr-value, .token.regex) {
+	color: var(--code-string);
+}
+
+.markdown-rendered pre :is(.token.number, .token.boolean, .token.constant),
+.markdown-source-view.mod-cm6 .HyperMD-codeblock .cm-atom {
+	color: var(--code-value);
+}
+
+.markdown-rendered pre :is(.token.property, .token.property-access, .token.attr-name) {
+	color: var(--code-property);
+}
+
+.markdown-rendered pre .token.function {
+	color: var(--code-function);
+}
+
+.markdown-rendered pre .token.comment {
+	color: var(--code-comment);
+}
+
+.markdown-rendered pre .token.operator {
+	color: var(--code-operator);
 }
 
 /* 兩個語法引擎的普通識別字與未分類標點共用正文色，避免同字異色。 */

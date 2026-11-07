@@ -34,7 +34,9 @@ flowchart TD
 
 ## 表面、控制與字型
 
-`--klp-*` 保留來源語意與局部幾何，再映射至 Obsidian 原生變數。明暗模式各自擁有表面、文字及陰影，極深色片段只覆寫深色語意。Noto Sans TC 與 IBM Plex Mono 內嵌於 CSS 尾端，不依賴外部載入。
+`--klp-*` 保留來源語意與局部幾何，再映射至 Obsidian 原生變數。明暗模式各自擁有表面、文字及陰影，極深色片段只覆寫深色語意。Noto Sans TC、Obel Mono 與 IBM Plex Mono 內嵌於 CSS 尾端，不依賴外部載入。
+
+預設等寬字型由 `--klp-font-code` 對應 Obel Mono 1.002 的正體與斜體可變 WOFF2。兩者均內嵌於主題。Obel Mono 缺字時依原堆疊回退至 IBM Plex Mono、系統等寬字型和 Noto Sans TC。
 
 工作區使用 8px 外距／間距、微立體側欄與 Stage、獨立分頁 Panel。Rail 以虛線與左欄視覺整合；實際面板位置由原生拖曳管理。Windows 視窗控制區依右欄狀態保留空間。
 

@@ -2,7 +2,7 @@
 
 以微立體表面、暖灰配色與獨立分頁 Panel 為特色的 Obsidian 純 CSS 佈景主題。設計源自 [Kallopis](https://github.com/technis-toolbox/Kallopis/tree/main/docs/design-tokens) 的「現代生產力」風格，支援亮色與深色，無需功能外掛。
 
-目前版本：**0.1.32**。
+目前版本：**0.1.33**。
 
 ## 下載與安裝
 
@@ -17,7 +17,7 @@
 
 ### 桌面 ZIP 安裝
 
-從 [最新 Release](https://github.com/MiuDog/MicroStereo/releases/latest) 下載 `MicroStereo-0.1.32-install.zip`。
+從 [最新 Release](https://github.com/MiuDog/MicroStereo/releases/latest) 下載 `MicroStereo-0.1.33-install.zip`。
 
 1. 將安裝包直接解壓至 Obsidian **筆記庫根目錄**。
 2. 確認檔案位於 `.obsidian/themes/MicroStereo/`。
@@ -25,7 +25,7 @@
 
 若主題尚未出現，重新開啟筆記庫。這是手動安裝包，尚未提交至 Obsidian 社群主題目錄。
 
-也可下載 `MicroStereo-0.1.32.zip`，將其中的 `MicroStereo` 資料夾放入 `.obsidian/themes/`。請擇一安裝。
+也可下載 `MicroStereo-0.1.33.zip`，將其中的 `MicroStereo` 資料夾放入 `.obsidian/themes/`。請擇一安裝。
 
 ## 風格與設定
 
@@ -35,7 +35,7 @@
 - 紅叉／綠勾正方形開關、2px 軌道內距，按壓不放大。
 - 不透明微立體 Callout、保留內部格線的圓角表格。
 - 普通內文使用次要文字色，有背景元件保留主文字對比；標題不變、粗體採輔色、斜體採低對比純色。
-- 內嵌 Noto Sans TC 與 IBM Plex Mono，無須額外安裝或連線載入字型。
+- 內嵌 Noto Sans TC 與 Obel Mono。Obel Mono 是預設等寬字型，IBM Plex Mono 補足缺字。
 
 明暗模式沿用 Obsidian「基本佈景主題」。正文全寬由「設定 → 編輯器 → 可讀行寬」控制：開啟限制行寬，關閉使用可用全寬。
 
@@ -55,4 +55,4 @@
 
 執行檔為 `theme.css` 與 `manifest.json`；[架構說明](architecture.md)。程式碼採 Tab 縮排、顯示寬度 2。
 
-主題採 [MIT License](LICENSE)。字型分別遵循 [Noto Sans TC OFL](licenses/OFL-NOTO-SANS-TC.txt) 與 [IBM Plex OFL](licenses/OFL-IBM-Plex.txt)，保留 Kallopis 設計來源及原始著作權聲明。
+主題採 [MIT License](LICENSE)。字型分別遵循 [Noto Sans TC OFL](licenses/OFL-NOTO-SANS-TC.txt)、[Obel Mono OFL](licenses/OFL-Obel-Mono.txt) 與 [IBM Plex OFL](licenses/OFL-IBM-Plex.txt)，保留 Kallopis 設計來源及原始著作權聲明。

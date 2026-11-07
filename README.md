@@ -2,7 +2,7 @@
 
 以微立體表面、暖灰配色與獨立分頁 Panel 為特色的 Obsidian 純 CSS 佈景主題。設計源自 [Kallopis](https://github.com/technis-toolbox/Kallopis/tree/main/docs/design-tokens) 的「現代生產力」風格，支援亮色與深色，無需功能外掛。
 
-目前版本：**0.1.31**。
+目前版本：**0.1.32**。
 
 ## 下載與安裝
 
@@ -17,7 +17,7 @@
 
 ### 桌面 ZIP 安裝
 
-從 [最新 Release](https://github.com/MiuDog/MicroStereo/releases/latest) 下載 `MicroStereo-0.1.31-install.zip`。
+從 [最新 Release](https://github.com/MiuDog/MicroStereo/releases/latest) 下載 `MicroStereo-0.1.32-install.zip`。
 
 1. 將安裝包直接解壓至 Obsidian **筆記庫根目錄**。
 2. 確認檔案位於 `.obsidian/themes/MicroStereo/`。
@@ -25,7 +25,7 @@
 
 若主題尚未出現，重新開啟筆記庫。這是手動安裝包，尚未提交至 Obsidian 社群主題目錄。
 
-也可下載 `MicroStereo-0.1.31.zip`，將其中的 `MicroStereo` 資料夾放入 `.obsidian/themes/`。請擇一安裝。
+也可下載 `MicroStereo-0.1.32.zip`，將其中的 `MicroStereo` 資料夾放入 `.obsidian/themes/`。請擇一安裝。
 
 ## 風格與設定
 

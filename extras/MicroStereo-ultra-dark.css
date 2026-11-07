@@ -1,6 +1,10 @@
 /* MicroStereo 極深色選用 snippet；啟用主題並切到深色模式後生效。 */
+:root:has(> body.is-mobile.theme-dark),
 body.theme-dark {
 	--klp-app: #101010;
+}
+
+body.theme-dark {
 	--klp-surface: #232323;
 	--klp-surface-inset: #232323;
 	--klp-surface-muted: #232323;

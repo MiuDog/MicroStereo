@@ -62,6 +62,8 @@ flowchart TD
 
 行動樣式限定 `body.is-mobile`，平板分頁及固定側欄限定 `body.is-tablet`；共用桌面語意與 `effect-frame-relief`，不另建行動色盤。原生 workspace、drawer、mobile-navbar、toolbar 分別投影同一組表面；保留安全區、鍵盤位置、滑動與原生側欄事件。Stage 外距仍為 8px，分頁容器留出陰影繪製空間。新版宿主的 mod-raised 玻璃效果改為實色微立體，設定保留薄陰影及既有圓角層級。
 
+行動端文件根節點與工作區共用不透明的 app 底色，包含選用極深色片段。側欄或主內容平移期間，文件畫布提供一致的底色；深色模式也將根畫布標記為深色。這層底色獨立於原生側欄遮罩與動畫。
+
 觸控控制以宿主 touch-size-m（44px）保留可點擊高度。複製控制只放大觸控盒，圖形仍為 16px；下拉右側保留箭頭空間，系統選取器不由 CSS 接管。WebKit 遮罩與背景濾鏡均有前綴適配。行號頁面的左右留白改為 48px／16px，避免窄螢幕沿用桌面雙側 64px。
 
 0.1.30 明確在 body.is-mobile 重新投影 toggle／slider 的宿主變數，避免原生行動預設覆寫：toggle 軌道 4px、正方形色塊 2px 圓角；slider 拖動點 12×12px、3px 圓角、4px 軌道，按壓不放大。WebKit 拖動點 top 歸零，只用 (track−thumb)/2 的 margin 置中，避免原生 top 與 margin 重複偏移。側欄下拉的實際表面位於 workspace-drawer-tab-select > workspace-tab-header-inner，單獨套用 6px 控制圓角；不更換選單或事件。

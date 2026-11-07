@@ -163,13 +163,17 @@ body {
 }
 
 /* 淺色：theme.colors 的 light 欄，ARGB 已轉為 CSS RGB／RGBA。 */
+:root:has(> body.is-mobile.theme-light),
+.theme-light {
+	--klp-app: #e7e4dd;
+}
+
 .theme-light {
 	--klp-prose-body: var(--klp-text-muted);
 	--klp-prose-italic: #746f65;
 	--klp-settings-button-shadow: 0 1px 2px #00000029, inset 0 1px 0 #ffffff80;
 	--klp-callout-tint: 16%;
 	--klp-callout-icon-tint: 50%;
-	--klp-app: #e7e4dd;
 	--klp-surface: #efede7;
 	--klp-surface-inset: #efede7;
 	--klp-surface-muted: #e1ddd2;
@@ -217,13 +221,17 @@ body {
 }
 
 /* 深色：theme.colors 的 dark 欄，保留暖灰與黑白操作色。 */
+:root:has(> body.is-mobile.theme-dark),
+.theme-dark {
+	--klp-app: #201f1c;
+}
+
 .theme-dark {
 	--klp-prose-body: var(--klp-text-muted);
 	--klp-prose-italic: #989387;
 	--klp-settings-button-shadow: 0 1px 2px #00000052, inset 0 1px 0 #ffffff14;
 	--klp-callout-tint: 28%;
 	--klp-callout-icon-tint: 80%;
-	--klp-app: #201f1c;
 	--klp-surface: #292724;
 	--klp-surface-inset: #292724;
 	--klp-surface-muted: #484339;
@@ -1534,6 +1542,15 @@ input[type="checkbox"]:not(:checked) {
 	top: 0;
 	inset-inline-start: auto;
 	inset-inline-end: 100%;
+}
+
+/* 原生側欄平移時，文件畫布以實色承接前景重繪的空隙。 */
+:root:has(> body.is-mobile) {
+	background-color: var(--klp-app);
+}
+
+:root:has(> body.is-mobile.theme-dark) {
+	color-scheme: dark;
 }
 
 /* 行動端共用語意外觀，保留原生抽屜、導覽、安全區與鍵盤定位。 */
